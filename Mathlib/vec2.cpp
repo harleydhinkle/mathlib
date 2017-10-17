@@ -1,4 +1,5 @@
 #include "vec2.h"
+#include "mathutils.h"
 #include<cmath>
 #include <cfloat>
 vec2 operator+(const vec2 & lhs, const vec2 & rhs)
@@ -85,11 +86,11 @@ bool operator==(const vec2 & lhs, const vec2 & rhs)
 }
 bool operator!=(const vec2 & lhs, const vec2 & rhs)
 {
-	if (abs(lhs.x - rhs.x) > FLT_EPSILON&&abs(lhs.y - rhs.y) > FLT_EPSILON)
+	if (abs(lhs.x - rhs.x) < FLT_EPSILON&&abs(lhs.y - rhs.y) < FLT_EPSILON)
 	{
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 float mag(const vec2 & v)
@@ -134,7 +135,20 @@ float dist(const vec2 & a, const vec2 & b)
 
  vec2 min(const vec2 & a, const vec2 & b)
  {
-	 
+	 vec2 temp;
+	 temp.x = min(a.x, b.x);
+	 temp.y = min(a.y, b.y);
+
+	 return temp;
+ }
+
+ vec2 max(const vec2 & a, const vec2 & b)
+ {
+	 vec2 temp;
+	 temp.x = max(a.x, b.x);
+	 temp.y = max(a.y, b.y);
+
+	 return temp;
  }
 
  vec2 larp(const vec2 & s, const vec2 &e, float a)
@@ -142,7 +156,7 @@ float dist(const vec2 & a, const vec2 & b)
 	 return s + a*(e - s);
  }
 
-float vec2::operator[](unsigned idx)
+float &vec2::operator[](unsigned idx)
 {
 	return v[idx];
 }
