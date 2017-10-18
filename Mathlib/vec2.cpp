@@ -24,14 +24,14 @@ vec2 operator-(const vec2 & lhs)
 	result.y = lhs.y * -1;
 	return result;
 }
-vec2 operator*(vec2 & lhs, const float & rhs)
+vec2 operator*(const vec2 & lhs, const float rhs)
 {
 	vec2 times;
 	times.x = lhs.x *  rhs; 
 	times.y = lhs.y *  rhs;
 	return times;
 }
-vec2 operator*(const float & lhs, vec2 & rhs)
+vec2 operator*(const float lhs, const vec2 & rhs)
 {
 	vec2 times2;
 	times2.x = rhs.x *  lhs;
@@ -78,7 +78,7 @@ vec2 & operator-=(vec2 & lhs, const vec2 & rhs)
 
 bool operator==(const vec2 & lhs, const vec2 & rhs)
 {
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON&&abs(lhs.y - rhs.y) < FLT_EPSILON) 
+	if (abs(lhs.x - rhs.x) <= EPSILON&&abs(lhs.y - rhs.y) <= EPSILON) 
 	{
 		return true;
 	}
@@ -86,7 +86,7 @@ bool operator==(const vec2 & lhs, const vec2 & rhs)
 }
 bool operator!=(const vec2 & lhs, const vec2 & rhs)
 {
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON&&abs(lhs.y - rhs.y) < FLT_EPSILON)
+	if (abs(lhs.x - rhs.x) <= EPSILON&&abs(lhs.y - rhs.y) <= EPSILON)
 	{
 		return false;
 	}

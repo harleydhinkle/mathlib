@@ -23,8 +23,8 @@ vec3 operator+=( vec3 & lhs, const vec3 & rhs)
 
 bool operator==(const vec3 & lhs, const vec3 & rhs)
 {
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON&&abs(lhs.y - rhs.y) < FLT_EPSILON &&
-		abs(lhs.z - rhs.z) < FLT_EPSILON)
+	if (abs(lhs.x - rhs.x) <= EPSILON &&abs(lhs.y - rhs.y) <= EPSILON &&
+		abs(lhs.z - rhs.z) <= EPSILON)
 	{
 		return true;
 	}
@@ -87,8 +87,8 @@ vec3 & operator-=(vec3 & lhs, const vec3 & rhs)
 
 bool operator!=(const vec3 & lhs, const vec3 & rhs)
 {
-	if (abs(lhs.x - rhs.x) < FLT_EPSILON&&abs(lhs.y - rhs.y) < FLT_EPSILON &&
-		abs(lhs.z - rhs.z) < FLT_EPSILON)
+	if (abs(lhs.x - rhs.x) <= EPSILON&&abs(lhs.y - rhs.y) <= EPSILON &&
+		abs(lhs.z - rhs.z) <= EPSILON)
 	{
 		return false;
 	}
@@ -170,7 +170,20 @@ vec3 operator*(const float & lhs, vec3 & rhs)
 
 vec3 clamp(const vec3 & a_min, const vec3 & v, const vec3 & a_max)
 {
-	return vec3();
+	vec3 dummy = v;
+	//min {1,1,1};
+	//value {0,6,3};
+	//max {5,5,5};
+
+	dummy = min(dummy, a_max);
+	dummy = max(dummy, a_min);
+
+	return dummy;
+}
+
+vec3 cross(const vec3 & a, const vec3 & b)
+{
+	return vec3{a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x};
 }
 
 float & vec3::operator[](unsigned idx)

@@ -15,8 +15,8 @@ union vec2
 vec2 operator+(const vec2 &lhs,const vec2 &rhs);
 vec2 operator-(const vec2 &lhs, const vec2 &rhs);
 vec2 operator-(const vec2 &lhs);
-vec2 operator*(vec2 & lhs, const float & rhs);
-vec2 operator*(const float & lhs, vec2 & rhs);
+vec2 operator*(const vec2 & lhs, const float  rhs);
+vec2 operator*(const float  lhs, const vec2 & rhs);
 vec2 operator/(vec2 & lhs, const float & rhs);
 vec2 operator/=(vec2 & lhs, const float & rhs);
 vec2 operator*=(vec2 & lhs, const float & rhs);
