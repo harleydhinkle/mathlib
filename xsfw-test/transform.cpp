@@ -9,7 +9,7 @@ Transform::Transform()
 
 mat3 Transform::getLocalTransform() const
 {
-	return scale(dimenson)* rotate(angle)*translate(position);
+	return translate(position)*scale(dimenson)* rotate(angle);
 }
 
 void DrawMatrix(const mat3 & t, float drawing_scale)

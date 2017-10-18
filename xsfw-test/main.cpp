@@ -10,7 +10,7 @@ int main()
 	while (sfw::stepContext()) 
 	{
 		DrawMatrix(myTransform.getLocalTransform(), 40);
-		myTransform.angle  ;
+		myTransform.angle += sfw::getDeltaTime()*180;
 	}
 	sfw::termContext();
 }
