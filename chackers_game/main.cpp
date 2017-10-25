@@ -56,7 +56,8 @@ int main()
 
 	std::cout << "walcome to chackers game" << std::endl;
 	sfw::initContext(800, 800, "chackers game");
-	sfw::setBackgroundColor(BLUE);
+	sfw::setBackgroundColor(BLACK);
+	//sfw::setBackgroundColor(BLUE);
 	while (sfw::stepContext())
 	{
 		bor.draw();
