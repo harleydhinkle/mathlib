@@ -21,9 +21,18 @@
     <ClCompile Include="transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DrawSapes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rigidbody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawSapes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

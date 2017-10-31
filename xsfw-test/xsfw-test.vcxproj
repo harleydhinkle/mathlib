@@ -126,10 +126,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawSapes.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawSapes.h" />
+    <ClInclude Include="rigidbody.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
