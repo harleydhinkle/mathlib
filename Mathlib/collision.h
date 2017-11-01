@@ -1,4 +1,5 @@
 #pragma once
+
 #include "mathutils.h"
 #include "shapes.h"
 #include <cmath>
@@ -15,4 +16,5 @@ Collision intersect_1D(float Amin, float Amax, float Bmin, float Bmax);
 Collision intersect_AABB(const AABB &A, const AABB &B);
 
 Collision intersect_circle(const circle &A, const circle &B);
-void static_resolution(vec2 &pos, vec2 &vel, const Collision &hit, float elasticity = 1.0f);
+
+void static_resolution(vec2 &pos, vec2 &vel, const Collision &hit, float elasticity);

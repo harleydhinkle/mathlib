@@ -129,6 +129,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DrawSapes.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>

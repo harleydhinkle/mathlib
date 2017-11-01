@@ -165,3 +165,12 @@ float vec2::operator[](unsigned idx) const
 {
 	return v[idx];
 }
+vec2 project(const vec2 & v, const vec2 & axis)
+{
+	return dot(v, axis) * axis;
+}
+
+vec2 reflect(const vec2 & v, const vec2 & axis)
+{
+	return 2 * project(v, axis) - v;
+}
