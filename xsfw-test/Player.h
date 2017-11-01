@@ -22,4 +22,14 @@ public:
 	Collider collider;
 	Sprite sprite;
 };
+class Ball // dynamic rigidbody
+{
+public:
+	Transform transform;
+	rigidbody rigidbody;
+	Collider collider;
+	Sprite sprite;
+};
 bool doCollision(Player&player, const Wall&wall);
+bool doCollision(Ball &ball, const Wall &wall);
+bool doCollision(Player &player, const Ball &wall);
