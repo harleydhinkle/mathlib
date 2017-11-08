@@ -136,7 +136,6 @@
     <ClInclude Include="colison.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="drawshapes.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="rigidbody.h" />
     <ClInclude Include="sprite.h" />

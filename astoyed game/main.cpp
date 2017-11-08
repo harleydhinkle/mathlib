@@ -2,6 +2,7 @@
 #include "player.h"
 #include "drawshapes.h"
 #include "main.h"
+
 int main()
 {
 	sfw::initContext();
@@ -14,7 +15,7 @@ int main()
 	player.collider.box.extents = { .5,.5 };
 	Wall walls[3];
 	walls[0].transform.position = { 0,0 };
-	walls[0].transform.dimenson = { 4000,80 };
+	walls[0].transform.dimenson = { 3000,80 };
 	walls[0].collider.box.extents = { .5,.5 };
 	walls[0].sprite.handle = sfw::loadTextureMap("../resources/wall.png");
 
@@ -24,10 +25,11 @@ int main()
 	walls[1].sprite.handle = sfw::loadTextureMap("../resources/wall.png");
 
 	walls[2].transform.position = { 300,600 };
-	walls[2].transform.dimenson = { 800,80 };
+	walls[2].transform.dimenson = { 900,80 };
 	walls[2].collider.box.extents = { .5,.5 };
 	walls[2].sprite.handle = sfw::loadTextureMap("../resources/wall.png");
 	star star;
+
 	while (sfw::stepContext())
 	{
 		
@@ -50,8 +52,9 @@ int main()
 		for (int i = 0; i < 3; ++i) {
 			drawAABB2(walls[i].collider.getGlobalBox(walls[i].transform), RED);
 		}
-		sfw::playSound(100,true);
+		sfw::playSound(1,true);
 	}
+	sfw::stopSound(1);
 	sfw::termContext();
 
 }

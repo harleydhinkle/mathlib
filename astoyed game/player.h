@@ -38,6 +38,22 @@ public:
 	Collider collider;
 	Sprite sprite;
 };
+class enmey 
+{
+public:
+	trans transform;
+	rigidbody rigidbody;
+	Collider collider;
+	Sprite sprite;
+	float health = 1;
+	bool enabled = false;
+	void update();
+	void draw();
+	enmey();
+
+};
 
 bool doCollision2(Player&player, const Wall&wall);
 bool doCollision(star &star, const Wall &wall);
+bool doCollision(enmey&badguy, Player &player);
+bool doCollision(enmey&badguy, star &star);

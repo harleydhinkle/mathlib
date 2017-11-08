@@ -1,5 +1,4 @@
 #include "player.h"
-
 bool doCollision2(Player & player, const Wall & wall)
 {
 	auto hit = collides(player.transform, player.collider, wall.transform, wall.collider);
@@ -21,6 +20,31 @@ bool doCollision(star & star, const Wall & wall)
 	{
 		static_resolution(star.transform.position, star.rigidbody.velocity, hit);
 		return true;
+	}
+	return false;
+}
+
+bool doCollision(enmey & badguy, Player & player)
+{
+	auto hit = collides(badguy.transform, badguy.collider, player.transform, player.collider);
+	if (hit.penetrationDepth > 0) 
+	{
+		sfw::termContext();
+		return true;
+	}
+	return false;
+}
+
+bool doCollision(enmey & badguy, star & star)
+{
+	auto hit = collides(badguy.transform, badguy.collider, star.transform, star.collider);
+	if (hit.penetrationDepth > 0) 
+	{
+		badguy.health -= 1;
+		if (badguy.health <= 0) 
+		{
+			badguy.enabled = false;
+		}
 	}
 	return false;
 }
@@ -98,4 +122,20 @@ void star::draw()
 	sprite = sfw::loadTextureMap("../resources/star.png");
 	sprite.draw(transform);
 	
+}
+
+void enmey::update()
+{
+}
+
+void enmey::draw()
+{
+	sprite = sfw::loadTextureMap("../resources/zombie.png");
+	sprite.draw(transform);
+	
+}
+
+enmey::enmey()
+{
+	health = 1;
 }
