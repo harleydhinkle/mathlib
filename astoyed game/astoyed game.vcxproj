@@ -126,13 +126,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="colison.cpp" />
     <ClCompile Include="drawshapes.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="colison.h" />
+    <ClInclude Include="controller.h" />
     <ClInclude Include="drawshapes.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="rigidbody.h" />
+    <ClInclude Include="sprite.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
