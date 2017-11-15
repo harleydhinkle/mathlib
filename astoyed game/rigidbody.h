@@ -8,7 +8,7 @@ public:
 	vec2 velocity, acceleration, force, inpulse;
 	float angulerVelocity, angelerAcceleration, torque;
 	float anglerDrag;
-	rigidbody() :velocity{ 0,0 }, acceleration{ 0,0 }, force{ 0,0 }, inpulse{ 0,0 }, mass(10), drag(.25f), angelerAcceleration(0), angulerVelocity(0), torque(0), anglerDrag(.25f)
+	rigidbody() :velocity{ 0,0 }, acceleration{ 0,0 }, force{ 0,0 }, inpulse{ 0,0 }, mass(1), drag(1), angelerAcceleration(0), angulerVelocity(0), torque(0), anglerDrag(.25f)
 	{
 
 	}

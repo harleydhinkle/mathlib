@@ -1,4 +1,6 @@
 #include "player.h"
+#include <random>
+#include <sstream>
 bool doCollision2(Player & player, const Wall & wall)
 {
 	auto hit = collides(player.transform, player.collider, wall.transform, wall.collider);
@@ -35,16 +37,18 @@ bool doCollision(enmey & badguy, Player & player)
 	return false;
 }
 
-bool doCollision(enmey & badguy, star & star)
+bool doCollision(enmey& badguy, star & star)
 {
 	auto hit = collides(badguy.transform, badguy.collider, star.transform, star.collider);
 	if (hit.penetrationDepth > 0) 
 	{
 		badguy.health -= 1;
-		if (badguy.health <= 0) 
+		/*if (badguy.health <= 0) 
 		{
 			badguy.enabled = false;
-		}
+			
+
+		}*/
 	}
 	return false;
 }
@@ -59,9 +63,9 @@ void Player::shoot()
 			if (!ninjastar[i].enabled)
 			{
 				ninjastar[i].lifetime = 5;
-				ninjastar[i].enabled=true;
+				ninjastar[i].enabled= true;
 				ninjastar[i].transform.position = transform.position;
-				ninjastar[i].rigidbody.force = { 3000,0 };
+				ninjastar[i].rigidbody.inpulse += { 900,0 };
 				ninjastar[i].transform.dimenson = { 20,20 };
 				break;
 			}
@@ -119,23 +123,99 @@ void star::update()
 
 void star::draw()
 {
-	sprite = sfw::loadTextureMap("../resources/star.png");
+	/*sprite = sfw::loadTextureMap("../resources/star.png");*/
 	sprite.draw(transform);
 	
 }
 
-void enmey::update()
+void enmey::update(int&score)
 {
+	
+		rigidbody.force += force;
+		if (health < 0)
+		{
+			score++;
+			enabled = false;
+
+		}
+		
+		rigidbody.integraten(transform, sfw::getDeltaTime());
+		collider.box.extents = { .5,.5 };
+		drawAABB2(collider.getGlobalBox(transform), CYAN);
+		
+	
 }
 
 void enmey::draw()
 {
-	sprite = sfw::loadTextureMap("../resources/zombie.png");
 	sprite.draw(transform);
+	
 	
 }
 
 enmey::enmey()
-{
+{ 
+	sprite = sfw::loadTextureMap("../resources/zombie.png");
 	health = 1;
+}
+
+void spawner::update(int&score)
+{
+	float dt = sfw::getDeltaTime();
+	spawnintervel -= dt;
+	if(spawnintervel <= 0)
+	{
+		for (int i = 0; i < 10; i++) 
+		{
+			if (!badguys[i].enabled) 
+			{
+				badguys[i].health = 1;
+				badguys[i].enabled = true;
+				int randomy = rand() % 500 + 50;
+				badguys[i].transform.position = vec2{ 850,(float)randomy };
+				badguys[i].transform.dimenson = { 40,40 };
+				badguys[i].force = vec2{ -10,0 };
+				break;
+				
+			}
+		}
+	}
+	for (int i = 0; i<10; i++)
+	{
+		if (badguys[i].enabled)
+		{
+			badguys[i].update(score);
+		}
+	}
+}
+
+
+
+void spawner::draw()
+{
+	for(int i = 0; i<10;i++)
+	{
+		if (badguys[i].enabled == true) 
+		{
+			badguys[i].draw();
+		}
+	}
+}
+
+spawner::spawner()
+{
+	starttimer = 10;
+	spawnintervel = starttimer;
+}
+
+void scoremanger::draw()
+{
+	std::string str = std::to_string(score);
+
+	sfw::drawString(handle, str.c_str(), 50, 500, 20, 20);
+}
+
+void scoremanger::update()
+{
+	
 }

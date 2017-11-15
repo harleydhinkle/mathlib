@@ -15,7 +15,7 @@ public:
 	bool enabled = false;
 	void update();
 	void draw();
-	float lifetime = 5;
+	float lifetime = 3;
 };
 class Player
 {
@@ -47,10 +47,30 @@ public:
 	Sprite sprite;
 	float health = 1;
 	bool enabled = false;
-	void update();
+	vec2 force;
+	void update(int & score);
 	void draw();
 	enmey();
 
+};
+class spawner 
+{
+public:
+	enmey badguys[10];
+	int badguyssize = 10;
+	float spawnintervel;
+	float starttimer;
+	void update(int &score);
+	void draw();
+	spawner();
+};
+class scoremanger 
+{
+public:
+	void draw();
+	unsigned int handle = sfw::loadTextureMap("../resources/fontmap.png", 16, 16);
+	int score = 0;
+	void update();
 };
 
 bool doCollision2(Player&player, const Wall&wall);
