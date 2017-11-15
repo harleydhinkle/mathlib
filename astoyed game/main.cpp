@@ -6,7 +6,7 @@
 int main()
 {
 	
-	sfw::initContext(900,600, "game");
+	sfw::initContext(800,600, "nigna vs zobmies");
 	Player player;
 
 	player.sprite = sfw::loadTextureMap("../resources/Ninja (2).png");
